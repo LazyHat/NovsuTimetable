@@ -1,43 +1,91 @@
 [versions]
-agp = "8.3.0-alpha01"
-java-version = "1.8"
+#AGP
+agp = "8.1.2"
+#JAVA
+java-version = "17"
+#Kotlin
 kotlin = "1.9.10"
-
-core-ktx = "1.10.1"
-
-lifecycle-runtime-ktx = "2.6.1"
-
-activity-compose = "1.7.2"
+#Kotlinx
+kotlinx-datetime = "0.4.1"
+kotlinx-serialization = "1.6.0"
+#Core
+core-ktx = "1.12.0"
+#Lifecycle
+lifecycle-runtime-ktx = "2.6.2"
+#Activity
+activity-compose = "1.8.0"
+#Navigation
+navigation = "2.7.4"
+#Compiler
 compose-compilerExtensionVersion = "1.5.3"
-
-compose-bom = "2023.08.00"
-
+#Boms
+compose-bom = "2023.10.00"
+#Tests
 junit = "4.13.2"
 androidx-test-ext-junit = "1.1.5"
 espresso-core = "3.5.1"
-
+#Tracer
+tracer = "0.2.6"
+#DI
+koin-compose = "3.5.0"
+koin-ktor = "3.5.1"
+#Ktor
+ktor = "2.3.5"
+#Data
+datastore = "1.0.0"
+#
+#
 [libraries]
+#koltinx
+kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinx-datetime" }
+kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+#Core
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
-
+#Lifecycle
 lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
-
+#Activity
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
+#Boms
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
-
+#UI
 ui = { group = "androidx.compose.ui", name = "ui" }
 ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
-
+navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
+#Material
 material3 = { group = "androidx.compose.material3", name = "material3" }
-
+#DI
+koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin-compose" }
+koin-androidx-compose-navigation = { group = "io.insert-koin", name = "koin-androidx-compose-navigation", version.ref = "koin-compose" }
+koin-ktor = { group = "io.insert-koin", name = "koin-ktor", version.ref = "koin-ktor" }
+koin-logger-slf4j = { group = "io.insert-koin", name = "koin-logger-slf4j", version.ref = "koin-ktor" }
+#ktor
+ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
+ktor-client-okhttp = { group = "io.ktor", name = "ktor-client-okhttp", version.ref = "ktor" }
+ktor-serialization = { group = "io.ktor", name = "ktor-serialization-kotlinx-json-jvm", version.ref = "ktor" }
+ktor-client-content-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
+#Tests
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
-
+#Data
+datastore = { group = "androidx.datastore", name = "datastore", version.ref = "datastore" }
+#Tracer
+tracer-crash-report = { group = "ru.ok.tracer", name = "tracer-crash-report", version.ref = "tracer" }
+#tracer-crash-report-native =  { group = "ru.ok.tracer", name = "tracer-crash-report-native", version.ref = "tracer" }
+#tracer-heap-dumps = { group = "ru.ok.tracer", name = "tracer-heap-dumps", version.ref = "tracer" }
+#tracer-disk-usage = { group = "ru.ok.tracer", name = "tracer-disk-usage", version.ref = "tracer" }
+#tracer-profiler-sampling = { group = "ru.ok.tracer", name = "tracer-profiler-sampling", version.ref = "tracer" }
+#tracer-profiler-systrace = { group = "ru.ok.tracer", name = "tracer-profiler-systrace", version.ref = "tracer" }
+#
+#
 [plugins]
-androidApplication = { id = "com.android.application", version.ref = "agp" }
-kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+tracer = { id = "ru.ok.tracer", version.ref = "tracer" }
+
 
