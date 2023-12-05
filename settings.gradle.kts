@@ -12,6 +12,9 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven { setUrl("https://artifactory-external.vkpartner.ru/artifactory/maven/") }
+        maven {
+            setUrl("https://androidx.dev/storage/compose-compiler/repository/")
+        }
     }
 }
 

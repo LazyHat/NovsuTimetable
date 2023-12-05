@@ -17,7 +17,7 @@ activity-compose = "1.8.1"
 #Navigation
 navigation = "2.7.5"
 #Compiler
-compose-compilerExtensionVersion = "1.5.3"
+compose-compilerExtensionVersion = "1.5.5-dev-k1.9.21-163bb051fe5"
 #Boms
 compose-bom = "2023.10.01"
 #Tests

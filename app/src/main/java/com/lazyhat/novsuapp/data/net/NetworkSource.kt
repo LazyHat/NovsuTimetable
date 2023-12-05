@@ -11,7 +11,7 @@ import io.ktor.http.*
 import kotlinx.coroutines.CoroutineDispatcher
 
 private val authority: URLBuilder
-	get() = URLBuilder(URLProtocol.HTTP, "192.168.0.110", port = 8080, pathSegments = listOf("tt")).clone()
+	get() = URLBuilder(URLProtocol.HTTP, "lazyhat.ru", pathSegments = listOf("tt")).clone()
 
 interface NetworkSource : BaseIO {
 	suspend fun getGroups(): List<Group>?
