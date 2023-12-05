@@ -11,7 +11,7 @@ import com.lazyhat.novsuapp.data.net.NetworkSourceImpl
 import com.lazyhat.novsuapp.data.repo.MainRepository
 import com.lazyhat.novsuapp.data.repo.MainRepositoryImpl
 import com.lazyhat.novsuapp.ui.screens.groupsettings.GroupSettingsScreenViewModel
-import com.lazyhat.novsuapp.ui.screens.timetable.TimeTableScreenViewModel
+import com.lazyhat.novsuapp.ui.screens.timetable.TimetableScreenViewModel
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -28,7 +28,7 @@ val mainModule = module {
     single {
         DataStoreFactory.create(
             GroupParametersSerializer,
-            produceFile = { androidContext().dataStoreFile("group-parameters") },
+            produceFile = { androidContext().dataStoreFile("group") },
             corruptionHandler = ReplaceFileCorruptionHandler { null },
             scope = CoroutineScope(Dispatchers.IO + SupervisorJob())
         )
@@ -48,6 +48,6 @@ val mainModule = module {
     }
     single<NetworkSource> { NetworkSourceImpl(get(), get()) }
     single<MainRepository> { MainRepositoryImpl(get(), get()) }
-    viewModel { TimeTableScreenViewModel(get()) }
+    viewModel { TimetableScreenViewModel(get()) }
     viewModel { GroupSettingsScreenViewModel(get()) }
 }

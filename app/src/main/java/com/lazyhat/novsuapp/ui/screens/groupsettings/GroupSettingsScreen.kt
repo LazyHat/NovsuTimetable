@@ -4,51 +4,30 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExposedDropdownMenuBox
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
-import org.koin.androidx.compose.koinViewModel
+import com.lazyhat.novsuapp.R
 import com.lazyhat.novsuapp.data.model.Grade
 import com.lazyhat.novsuapp.data.model.Group
 import com.lazyhat.novsuapp.data.model.GroupParameters
 import com.lazyhat.novsuapp.data.model.Institute
 import com.lazyhat.novsuapp.data.repo.MainRepository
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
+import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -66,7 +45,7 @@ fun GroupSettingsScreen(openDrawer: () -> Unit) {
                 )
             }
         }, title = {
-            Text("Group settings")
+            Text(stringResource(id = R.string.group_settings))
         })
     }) { padding ->
         Column(
@@ -83,7 +62,7 @@ fun GroupSettingsScreen(openDrawer: () -> Unit) {
                 expanded = expandedIndex == 0,
                 onClose = { expandedIndex = null },
                 onExpand = { expandedIndex = 0 },
-                label = "Grade",
+                label = stringResource(id = R.string.grade),
                 modifier = Modifier.fillMaxWidth(),
                 printValue = { it.number.toString() })
             DropDownOutlinedMenu(
@@ -93,9 +72,9 @@ fun GroupSettingsScreen(openDrawer: () -> Unit) {
                 expanded = expandedIndex == 1,
                 onClose = { expandedIndex = null },
                 onExpand = { expandedIndex = 1 },
-                label = "Institute",
+                label = stringResource(id = R.string.institute),
                 modifier = Modifier.fillMaxWidth(),
-                printValue = { it.name }
+                printValue = { stringResource(id = it.label)}
             )
             DropDownOutlinedMenu(
                 state = uiState.selected,
@@ -104,7 +83,7 @@ fun GroupSettingsScreen(openDrawer: () -> Unit) {
                 onExpand = { expandedIndex = 2 },
                 values = uiState.availableGroups,
                 onChangeValue = { vm.createEvent(GroupSettingsScreenEvent.EnterGroup(it)) },
-                label = "Group",
+                label = stringResource(id = R.string.group),
                 modifier = Modifier.fillMaxWidth(),
                 printValue = { it.name }
             )
@@ -122,8 +101,8 @@ fun <T> DropDownOutlinedMenu(
     values: List<T>,
     modifier: Modifier = Modifier,
     label: String? = null,
-    ifNullValue: String = "Not set",
-    printValue: (T) -> String,
+    ifNullValue: String = stringResource(id = R.string.not_setted),
+    printValue: @Composable (T) -> String,
     onChangeValue: (T) -> Unit
 ) {
     val animateTrailingIconRotation by animateFloatAsState(
@@ -210,7 +189,7 @@ class GroupSettingsScreenViewModel(
     }
 
     private suspend fun updateGroupSettings() {
-        mainRepository.getGroupParameters().let {
+        mainRepository.parameters.first().let {
             _institute.value = it?.group?.institute
             _grade.value = it?.group?.grade
             _selected.value = it?.group

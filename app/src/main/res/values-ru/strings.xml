@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Новгу Расписание</string>
+    <string name="week_all">Все</string>
+    <string name="week_lower">Нижняя</string>
+    <string name="week_upper">Верхняя</string>
+    <string name="type_lecture_normal">Лекция</string>
+    <string name="type_practice_normal">Практическая</string>
+    <string name="type_laboratory_normal">Лабораторная</string>
+    <string name="type_consultation_normal">Консультация</string>
+    <string name="type_lecture_short">Лек.</string>
+    <string name="type_practice_short">Прак.</string>
+    <string name="type_laboratory_short">Лаб.</string>
+    <string name="type_consultation_short">Конс.</string>
+    <string name="subgroup">Подгруппа</string>
+    <string name="week">Неделя</string>
+    <string name="timetable">Расписание</string>
+    <string name="group_settings">Настройки группы</string>
+    <string name="menu">Меню</string>
+    <string name="grade">Курс</string>
+    <string name="institute">Институт</string>
+    <string name="group">Группа</string>
+    <string name="institute_ieis">ИЭИС</string>
+    <string name="institute_iceus">ИЦЕУС</string>
+    <string name="institute_inpo">ИНПО</string>
+    <string name="institute_ibhi">ИБХИ</string>
+    <string name="institute_igum">ИГУМ</string>
+    <string name="institute_imo">ИМО</string>
+    <string name="institute_iur">ИЮР</string>
+    <string name="institute_ipt">ИПТ</string>
+    <string name="error_no_group_selected">Не выбрана группа</string>
+    <string name="action_select_group">Выбрать группу</string>
+    <string name="error_unknown">Неизвестная ошибка</string>
+    <string name="last_updated">Посл. обновл.</string>
+    <string name="loading">Загрузка</string>
+    <string name="audithorium">Аудитория</string>
+    <string name="not_setted">Не выбрано</string>
+</resources>

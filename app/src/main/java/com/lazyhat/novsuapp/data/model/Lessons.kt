@@ -1,14 +1,36 @@
 package com.lazyhat.novsuapp.data.model
 
+import androidx.annotation.StringRes
+import com.lazyhat.novsuapp.R
 import kotlinx.datetime.DayOfWeek
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class Week { Upper, Lower, All }
+enum class Week(@StringRes val label: Int) {
+    Upper(R.string.week_upper),
+    Lower(R.string.week_lower),
+    All(R.string.week_all)
+}
 
 @Serializable
-enum class LessonType(val short: String) {
-    Consultation("Cons"), Lecture("Lec"), Practice("Prac"), Lab("Lab")
+enum class LessonType(@StringRes val normal: Int, @StringRes val short: Int) {
+    @Suppress("unused")
+    Consultation(
+        R.string.type_consultation_normal,
+        R.string.type_consultation_short
+    ),
+    Lecture(
+        R.string.type_lecture_normal,
+        R.string.type_lecture_short
+    ),
+    Practice(
+        R.string.type_practice_normal,
+        R.string.type_practice_short
+    ),
+    Lab(
+        R.string.type_laboratory_normal,
+        R.string.type_laboratory_short
+    )
 }
 
 @Serializable
